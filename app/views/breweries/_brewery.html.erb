@@ -2,19 +2,22 @@
   <h2>
     <%= brewery.name %>
   </h2>
-
   <p>
     <i>Established in: <%= brewery.year %> </i>
   </p>
-
-<p>
+  <p>
     <i>Beers count: <%= @brewery.beers.count %> </i>
   </p>
-
-<p>
- <% brewery.beers.each do |beer| %>
-   <%=link_to beer.name, beer %>
- <% end %>
-</p>  
-
+  <p>
+    <% brewery.beers.each do |beer| %>
+      <%=link_to beer.name, beer %>
+    <% end %>
+  </p>
+  <p>
+    <% if brewery.ratings.empty? %>
+      <p>Brewery has not yet been rated!</p>
+    <% else %>
+      <%= "Brewery has #{pluralize(brewery.ratings.count, 'rating')} with an average of #{brewery.average_rating}"  %>
+    <% end %>
+  </p>
 </div>
