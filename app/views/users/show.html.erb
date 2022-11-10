@@ -4,18 +4,20 @@
   <p> <%= @user.username %>
     <p><%= "Has made #{pluralize(@user.ratings.count, 'rating')}, average rating #{@user.average_rating}" %></p>
     <p><strong>ratings:</strong></p>
-        <ul>
-          <% @user.ratings.each do |rating| %>
-            <li><%= "#{rating.to_s}" %>
-              <% if @user == current_user %>
-                <%= link_to "Delete", rating, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-              <% end %>
-            </li>
+    <ul>
+      <% @user.ratings.each do |rating| %>
+        <li><%= "#{rating.to_s}" %>
+          <% if @user == current_user %>
+            <%= link_to "Delete", rating, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           <% end %>
-        </ul>
-      </div>
-      <div>
-        <%= link_to "Edit this user", edit_user_path(@user) %> |
-        <%= link_to "Back to users", users_path %>
-        <%= button_to "Destroy this user", @user, method: :delete %>
-      </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <%= link_to "Back to users", users_path %>
+    <% if @user == current_user %>
+      <%= link_to "Edit this user", edit_user_path(@user) %> 
+      <%= button_to "Destroy this user", @user, method: :delete %>
+    <% end %>
+  </div>
