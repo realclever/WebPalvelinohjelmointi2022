@@ -3,13 +3,21 @@
   <h3><strong>Username:</strong></h3>
   <p> <%= @user.username %>
     <p><%= "Has made #{pluralize(@user.ratings.count, 'rating')}, average rating #{@user.average_rating}" %></p>
-    <p><strong>ratings:</strong></p>
+    <p><strong>ratings</strong></p>
     <ul>
       <% @user.ratings.each do |rating| %>
         <li><%= "#{rating.to_s}" %>
           <% if @user == current_user %>
             <%= link_to "Delete", rating, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
           <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <p><strong>member of</strong></p>
+    <ul>
+      <% @user.beer_clubs.each do |beer_club| %>
+        <li>
+        <%= link_to beer_club.name, beer_club %>
         </li>
       <% end %>
     </ul>
