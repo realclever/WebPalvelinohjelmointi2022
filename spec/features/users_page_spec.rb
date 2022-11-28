@@ -52,6 +52,14 @@ end
     it "shows users ratings" do
     sign_in(username: "Pekka", password: "Foobar1")
     expect(page).to have_content "Pekka\nHas made 2 ratings, average rating 2.0"
-    save_and_open_page
     end
+
+    it "remove user rating(s)" do
+      sign_in(username: "Pekka", password: "Foobar1")
+      expect(page).to have_content "Pekka\nHas made 2 ratings, average rating 2.0"
+      expect{
+        page.all('a', text: 'Delete')[1].click 
+      }.to change{Rating.count}.by(-1)
+      expect(page).to have_content "Pekka\nHas made 1 rating, average rating 1"
+  end
 end

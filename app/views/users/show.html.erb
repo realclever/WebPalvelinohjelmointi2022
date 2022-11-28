@@ -8,11 +8,16 @@
       <% @user.ratings.each do |rating| %>
         <li><%= "#{rating.to_s}" %>
           <% if @user == current_user %>
-            <%= link_to "Delete", rating, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+            <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
           <% end %>
         </li>
       <% end %>
     </ul>
+
+    <p><strong>Favorite brewery:</strong> </p>
+
+    <p><strong>Favorite style:</strong> </p>
+
     <p><strong>member of</strong></p>
     <ul>
       <% @user.beer_clubs.each do |beer_club| %>

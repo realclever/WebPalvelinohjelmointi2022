@@ -12,18 +12,17 @@ RSpec.describe Beer, type: :model do
       end
 
       it "is not saved without a proper name" do
-        beer = Beer.create style: "teststyle", brewery: testbrewery
+        beer = Beer.create style: "teststyle"
 
         expect(beer).not_to be_valid
         expect(Beer.count).to eq(0)
       end
 
       it "is not saved without a proper style" do
-        beer = Beer.create name: "testbeer", brewery: testbrewery
+        beer = Beer.create name: "testbeer"
 
         expect(beer).not_to be_valid
         expect(Beer.count).to eq(0)
-        #????!
       end
     end
 end
