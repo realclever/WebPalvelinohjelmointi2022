@@ -15,4 +15,24 @@ class User < ApplicationRecord
 
     ratings.order(score: :desc).limit(1).first.beer
   end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+
+    breweries_averages = []
+    ratings.group_by { |b| b.beer.brewery.name }.each do |brewery, ratings|
+      breweries_averages << { brewery:, rating: (ratings.map(&:score).sum / ratings.count.to_f) }
+    end
+    breweries_averages.min_by{ |b| -b[:rating] }[:brewery]
+  end
+
+  def favorite_style
+    return nil if ratings.empty?
+
+    styles_averages = []
+    ratings.group_by { |s| s.beer.style }.each do |style, ratings|
+      styles_averages << { style:, rating: (ratings.map(&:score).sum / ratings.count.to_f) }
+    end
+    styles_averages.min_by{ |s| -s[:rating] }[:style]
+  end
 end

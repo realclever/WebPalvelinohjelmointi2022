@@ -13,16 +13,15 @@
         </li>
       <% end %>
     </ul>
-
-    <p><strong>Favorite brewery:</strong> </p>
-
-    <p><strong>Favorite style:</strong> </p>
-
+    <% if @user.ratings.any? %>
+      <p><strong>Favorite brewery</strong> <%= @user.favorite_brewery %> </p>
+      <p><strong>Favorite style</strong> <%= @user.favorite_style %> </p>
+    <% end %>
     <p><strong>member of</strong></p>
     <ul>
       <% @user.beer_clubs.each do |beer_club| %>
         <li>
-        <%= link_to beer_club.name, beer_club %>
+          <%= link_to beer_club.name, beer_club %>
         </li>
       <% end %>
     </ul>
@@ -30,7 +29,7 @@
   <div>
     <%= link_to "Back to users", users_path %>
     <% if @user == current_user %>
-      <%= link_to "Edit this user", edit_user_path(@user) %> 
+      <%= link_to "Edit this user", edit_user_path(@user) %>
       <%= button_to "Destroy this user", @user, method: :delete %>
     <% end %>
   </div>

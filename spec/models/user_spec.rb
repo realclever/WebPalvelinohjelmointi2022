@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
     expect(User.count).to eq(0)
   end
 
-  describe "favorite beer" do
+  describe "favorite beer, style and brewery" do
     let(:user){ FactoryBot.create(:user) }
   
     it "has method for determining one" do
@@ -53,6 +53,26 @@ RSpec.describe User, type: :model do
     expect(user).to respond_to(:favorite_beer)
     end
 
+    it "has method for determining the favorite_brewery" do
+      user = FactoryBot.create(:user)
+      expect(user).to respond_to(:favorite_brewery)
+    end  
+
+    it "has method for determining the favorite_style" do
+      user = FactoryBot.create(:user)
+      expect(user).to respond_to(:favorite_style)
+    end
+
+    it "without ratings does not have a favorite brewery" do
+      user = FactoryBot.create(:user)
+      expect(user.favorite_brewery).to eq(nil)
+    end
+
+    it "without ratings does not have a favorite style" do
+      user = FactoryBot.create(:user)
+      expect(user.favorite_style).to eq(nil)
+    end    
+  
     it "is the only rated if only one rating" do
       beer = FactoryBot.create(:beer)
       rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)
@@ -80,3 +100,4 @@ def create_beers_with_many_ratings(object, *scores)
     create_beer_with_rating(object, score)
   end
 end
+

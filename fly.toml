@@ -1,6 +1,6 @@
-# fly.toml file generated for damp-mountain-4611 on 2022-10-29T21:01:02+03:00
+# fly.toml file generated for rating-beers-app on 2022-11-28T20:25:07+02:00
 
-app = "damp-mountain-4611"
+app = "rating-beers-app"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
