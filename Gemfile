@@ -27,6 +27,9 @@ gem 'jbuilder'
 # Password thingy
 gem 'bcrypt', '~> 3.1.7'
 
+# HTTP querys
+gem 'httparty'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -82,6 +85,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'webmock'
   gem 'launchy'
   gem 'simplecov', require: false
 end
