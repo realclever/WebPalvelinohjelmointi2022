@@ -311,6 +311,9 @@
           null,
           null,
           1,
+          0,
+          0,
+          null,
           null,
           null,
           1,
@@ -462,21 +465,29 @@
         "lines": [
           1,
           1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
+          3,
+          5,
           null,
           null,
           1,
+          2,
+          null,
+          2,
+          2,
+          null,
+          2,
+          null,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
           1,
+          2,
+          0,
+          null,
+          0,
           null,
           null
         ]
@@ -485,7 +496,42 @@
         "lines": [
           1,
           1,
-          5,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/matt/ratebeer/lib/beerweather_api.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/matt/ratebeer/app/models/weather.rb": {
+        "lines": [
+          1,
+          1,
+          0,
           null,
           null
         ]
@@ -497,6 +543,13 @@
           null,
           null,
           1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          3,
+          3,
           3,
           3,
           1,
@@ -571,6 +624,8 @@
           0,
           null,
           null,
+          0,
+          0,
           0,
           0,
           null,
@@ -742,6 +797,6 @@
         }
       }
     },
-    "timestamp": 1669824743
+    "timestamp": 1671028476
   }
 }

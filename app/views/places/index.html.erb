@@ -1,34 +1,49 @@
 <h1>Beer places search</h1>
-
 <p id="notice"><%= notice %></p>
-
 <%= form_with url: places_path, method: :post do |form| %>
   city <%= form.text_field :city %>
   <%= form.submit "Search" %>
 <% end %>
+<% if @weather %>
+  <div>
+    <br>
+    <strong> The current beer weather in <%= session[:city] %></strong>
+    <p>Now: <%= "#{@weather.temperature} C" %></p>
+    <p>Feels like: <%= "#{@weather.feelslike} C" %></p>
+    <% @weather.weather_icons.each do |i| %>
+      <%= image_tag i %>
+    <% end %>
+    <br>
+    <% @weather.weather_descriptions.each do |d| %>
+      <%= d  %>
+    <% end %>
+    <p>Wind: <%= "#{@weather.wind_speed} m/s, #{@weather.wind_dir}" %></p>
+    <p>Humidity: <%="#{@weather.humidity}%"%> </p>
+  </div>
+<% end %>
 <% if @places %>
-<table>
- <thead>
-   <th>id</th>
-   <th>name</th>
-   <th>status</th>
-   <th>street</th>
-   <th>city</th>
-   <th>zip</th>
-   <th>country</th>
-   <th>overall</th>
- </thead>
- <% @places.each do |place| %>
-   <tr>
-     <td><%= place.id %></td>
-     <td><%= link_to place.name, place_path(place.id) %></td>
-     <td><%= place.status %></td>
-     <td><%= place.street %></td>
-     <td><%= place.city %></td>
-     <td><%= place.zip %></td>
-     <td><%= place.country %></td>
-     <td><%= place.overall %></td>
-   </tr>
- <% end %>
-</table>
+  <table>
+    <thead>
+      <th>id</th>
+      <th>name</th>
+      <th>status</th>
+      <th>street</th>
+      <th>city</th>
+      <th>zip</th>
+      <th>country</th>
+      <th>overall</th>
+    </thead>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.id %></td>
+        <td><%= link_to place.name, place_path(place.id) %></td>
+        <td><%= place.status %></td>
+        <td><%= place.street %></td>
+        <td><%= place.city %></td>
+        <td><%= place.zip %></td>
+        <td><%= place.country %></td>
+        <td><%= place.overall %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>

@@ -5,6 +5,9 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
       [ Place.new( name: "Oljenkorsi", id: 1 ) ]
     )
+    allow(BeerweatherApi).to receive(:places_in).with("kumpula").and_return(
+      Weather.new( temperature: "-11", feelslike: "-15", weather_icons: [], weather_descriptions: [], wind_speed: "7", wind_dir: "ESE", humidity: "96" )
+    )
 
     visit places_path
     fill_in('city', with: 'kumpula')
@@ -17,6 +20,9 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
       [ Place.new( name: "Beer place", id: 1 ),
         Place.new( name: "Beer place II", id: 2 ) ]
+    )
+    allow(BeerweatherApi).to receive(:places_in).with("kumpula").and_return(
+      Weather.new( temperature: "-11", feelslike: "-15", weather_icons: [], weather_descriptions: [], wind_speed: "7", wind_dir: "ESE", humidity: "96" )
     )
     visit places_path
     fill_in("city", with: "kumpula")
@@ -31,6 +37,9 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
       []
     )
+    allow(BeerweatherApi).to receive(:places_in).with("kumpula").and_return(
+      Weather.new( temperature: "-11", feelslike: "-15", weather_icons: [], weather_descriptions: [], wind_speed: "7", wind_dir: "ESE", humidity: "96" )
+    )
     visit places_path
     fill_in("city", with: "kumpula")
     click_button "Search"
@@ -38,12 +47,4 @@ describe "Places" do
     expect(page).to have_content "No locations in kumpula"
     #save_and_open_page
   end
-
-
-
-
-
-
-
-
 end
