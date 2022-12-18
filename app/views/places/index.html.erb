@@ -1,5 +1,4 @@
 <h1>Beer places search</h1>
-<p id="notice"><%= notice %></p>
 <%= form_with url: places_path, method: :post do |form| %>
   city <%= form.text_field :city %>
   <%= form.submit "Search" %>
@@ -22,7 +21,7 @@
   </div>
 <% end %>
 <% if @places %>
-  <table>
+  <table class="table table-hover">
     <thead>
       <th>id</th>
       <th>name</th>
