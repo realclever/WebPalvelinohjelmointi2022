@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   resources :places, only: [:index, :show]
+  resources :styles
   post 'places', to: 'places#search'
   delete 'signout', to: 'sessions#destroy'
   resources :ratings, only: %i[index new create destroy]

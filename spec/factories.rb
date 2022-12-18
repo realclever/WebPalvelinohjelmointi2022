@@ -12,8 +12,13 @@ FactoryBot.define do
 
   factory :beer do
     name { "anonymous" }
-    style { "Lager" }
+    style
     brewery # olueeseen liittyvä panimo luodaan brewery-tehtaalla
+  end
+
+  factory :style do
+    name { "Dubbel" }
+    description { "Dubbel tasting beer" }
   end
 
   factory :rating do

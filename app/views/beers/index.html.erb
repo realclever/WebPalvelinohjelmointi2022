@@ -4,14 +4,14 @@
   <% @beers.each do |beer| %>
     <div id="<%= dom_id beer %>">
       <p>
-        <strong>Name:</strong>
+        <strong>Name: </strong>
         <%= link_to beer.name, beer %>
       </p>
       <p>
-        <strong>Style:</strong>
-        <%= beer.style %>
+        <strong>Style: </strong>
+        <%= beer.style.name %>
       </p>
     <% end %>
   </div>
   <p><%= link_to 'List of breweries', breweries_path %></p>
-<%= link_to('New beer', new_beer_path) if current_user %>
+  <%= link_to('New beer', new_beer_path) if current_user %>

@@ -45,6 +45,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -144,6 +145,13 @@
           0,
           0,
           null,
+          null
+        ]
+      },
+      "/Users/matt/ratebeer/app/models/style.rb": {
+        "lines": [
+          1,
+          1,
           null
         ]
       },
@@ -319,12 +327,10 @@
           1,
           2,
           2,
-          2,
           null,
           null,
           null,
           1,
-          0,
           0,
           null,
           null,
@@ -773,6 +779,67 @@
         "branches": {
         }
       },
+      "/Users/matt/ratebeer/app/controllers/styles_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/matt/ratebeer/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -797,6 +864,6 @@
         }
       }
     },
-    "timestamp": 1671028476
+    "timestamp": 1671320548
   }
 }

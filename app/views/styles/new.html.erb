@@ -1,0 +1,16 @@
+<h2>Create new style</h2>
+<%= form_for(@style) do |f| %>
+  <% if @style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@style.errors.count, "error") %> prohibited style from being saved:</h2>
+      <ul>
+        <% @style.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  Name: <%= f.text_field :name %>
+  Description: <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
