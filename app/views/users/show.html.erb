@@ -1,7 +1,7 @@
 <p style="color: green">
 <div>
   <h3><strong>Username:</strong></h3>
-  <p> <%= @user.username %>
+  <h4> <%= @user.username %> </h4>
     <p><%= "Has made #{pluralize(@user.ratings.count, 'rating')}, average rating #{@user.average_rating}" %></p>
     <p><strong>ratings</strong></p>
     <ul>
@@ -14,10 +14,10 @@
       <% end %>
     </ul>
     <% if @user.ratings.any? %>
-      <p><strong>Favorite brewery</strong> <%= @user.favorite_brewery %> </p>
-      <p><strong>Favorite style</strong> <%= @user.favorite_style.name %> </p>
+      <p><strong>Favorite brewery: </strong> <%= @user.favorite_brewery %> </p>
+      <p><strong>Favorite style: </strong> <%= @user.favorite_style.name %> </p>
     <% end %>
-    <p><strong>member of</strong></p>
+    <p><strong>Member of</strong></p>
     <ul>
       <% @user.beer_clubs.each do |beer_club| %>
         <li>
@@ -27,9 +27,9 @@
     </ul>
   </div>
   <div>
-    <%= link_to "Back to users", users_path, class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to "Back to users", users_path, class: "btn btn-primary btn-sm" %>
     <% if @user == current_user %>
-      <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-outline-primary btn-sm" %>
+      <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary btn-sm" %>
       <br><br>
       <%= button_to "Destroy this user", @user, method: :delete, class: "btn btn-danger btn-sm" %>
     <% end %>

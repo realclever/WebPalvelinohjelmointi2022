@@ -17,7 +17,7 @@
         <br>
       <% end %>
     <% else %>
-      <%= button_to("End the membership", @membership = Membership.find_by(beer_club_id: @beer_club.id, user_id: current_user.id), method: :delete) if current_user %>
+      <%= button_to("End the membership", @membership = Membership.find_by(beer_club_id: @beer_club.id, user_id: current_user.id), method: :delete, class: "btn btn-danger btn-sm") if current_user %>
       <br>
     <% end %>
   <% end %>
