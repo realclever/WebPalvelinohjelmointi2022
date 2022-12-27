@@ -1,10 +1,31 @@
-<h2>List of ratings</h2>
-<p>Number of ratings: <%= @ratings.count %> </p>
-<ul>
-  <% @ratings.each do |rating| %>
-    <li> <%= render rating %> </li>
-  <% end %>
-</ul>
+<h2>Ratings</h2>
+<br>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Best beers</h2>
+      <%= render 'beers/helper' %>
+    </div>
+    <div class="col-md-4">
+      <h2>Best breweries</h2>
+      <%= render 'breweries/helper' %>
+    </div>
+    <div class="col-md-4">
+      <h2>Best styles</h2>
+      <%= render 'styles/helper' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Most active users</h2>
+      <%= render 'users/helper' %>
+    </div>
+    <div class="col-md-4">
+      <h2>Recent ratings</h2>
+      <%= render 'ratings/helper' %>
+    </div>
+  </div>
+</div>
 <p>
   <%= link_to "New Rating", new_rating_path, class:"btn btn-primary btn-sm" %>
 </p>

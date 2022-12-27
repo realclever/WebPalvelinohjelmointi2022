@@ -35,4 +35,8 @@ class User < ApplicationRecord
     end
     styles_averages.min_by{ |s| -s[:rating] }[:style]
   end
+
+  def self.top(num)
+    User.all.sort_by{ |b| -(b.average_rating || 0) }[0..num - 1]
+  end
 end
