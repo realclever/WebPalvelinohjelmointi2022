@@ -7,8 +7,9 @@
   </thead>
   <tbody>
   <tbody class="table-group-divider">
-    <% @top_users.each do |user| %>
+    <% @top_users.each_with_index do |user, index| %>
       <tr>
+       <td><%= index +=1 %></td>
         <td><%= user.username %></td>
         <td><%= user.ratings.count %> ratings</td>
       </tr>

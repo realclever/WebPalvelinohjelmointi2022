@@ -37,6 +37,6 @@ class User < ApplicationRecord
   end
 
   def self.top(num)
-    User.all.sort_by{ |b| -(b.average_rating || 0) }[0..num - 1]
+    User.all.sort_by{ |b| -(b.ratings.count || 0) }[0..num - 1]
   end
 end
