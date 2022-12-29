@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :ensure_that_is_admin, only: [:toggle_mode]
 
   # GET /users or /users.json
   def index
@@ -20,12 +21,9 @@ class UsersController < ApplicationController
   end
 
   def toggle_mode
-    brewery = Brewery.find(params[:id])
-    brewery.update_attribute :active, !brewery.active
-
-    new_status = brewery.active? ? "active" : "retired"
-
-    redirect_to brewery, notice: "brewery activity status changed to #{new_status}"
+    user = User.find(params[:id])
+    user.update_attribute :closed, !user.closed
+    redirect_to user
   end
 
   # POST /users or /users.json

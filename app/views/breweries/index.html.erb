@@ -6,21 +6,52 @@
 
 <div id="breweries">
   <% @active_breweries.each do |brewery| %>
-    <%= render brewery %>
+    <h3>
+    <%= brewery.name %>
+    <% if not brewery.active  %>
+      <span class="badge bg-secondary">retired</span>
+    <% end %>
+  </h3>
+  <p>
+    <i>Established in: <%= brewery.year %> </i>
+  </p>
+  <p>
+    <% if brewery.ratings.empty? %>
+      <p>Brewery has not yet been rated!</p>
+    <% else %>
+      <%= "Brewery has #{pluralize(brewery.ratings.count, 'rating')} with an average of #{round(brewery.average_rating)}"  %>
+    <% end %>
+  </p>
+    <%= link_to "Show this brewery", brewery, class: "btn btn-outline-primary btn-sm" %>
+    <br><br>
   <% end %>
+   
 </div>
 
 <h2>Retired</h2>
-
 <p> Number of retired breweries: <%= @retired_breweries.count %> </p>
-
 <div id="retired_breweries">
   <% @retired_breweries.each do |brewery| %>
-    <%= render brewery %>
+    <h3>
+    <%= brewery.name %>
+    <% if not brewery.active  %>
+      <span class="badge bg-secondary">retired</span>
+    <% end %>
+  </h3>
+  <p>
+    <i>Established in: <%= brewery.year %> </i>
+  </p>
+  <p>
+    <% if brewery.ratings.empty? %>
+      <p>Brewery has not yet been rated!</p>
+    <% else %>
+      <%= "Brewery has #{pluralize(brewery.ratings.count, 'rating')} with an average of #{round(brewery.average_rating)}"  %>
+    <% end %>
+  </p>
+    <%= link_to "Show this brewery", brewery, class: "btn btn-outline-primary btn-sm" %>
+    <br>
   <% end %>
 </div>
 
-<p>
-<%= link_to "List of beers", beers_path, class:"btn btn-primary btn-sm"%>
 </p>
 <%= link_to("New brewery", new_brewery_path, class:"btn btn-primary btn-sm") if current_user %>

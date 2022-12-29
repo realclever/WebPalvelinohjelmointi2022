@@ -1,35 +1,46 @@
 <div>
-<br>
+  <br>
   <h2> <%= @user.username %> </h2>
-    <p><%= "Has made #{pluralize(@user.ratings.count, 'rating')}, average rating #{@user.average_rating}" %></p>
-    <p><strong>ratings</strong></p>
-    <ul>
-      <% @user.ratings.each do |rating| %>
-        <li><%= "#{rating.to_s}" %>
-          <% if @user == current_user %>
-            <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
-          <% end %>
-        </li>
+  <p>
+    <% if !(@user == current_user) && current_user.admin %>
+      <% if @user.closed  %>
+        <span class="badge bg-danger">closed</span>
+        <%= button_to "Open account", toggle_mode_user_path(@user), data: {turbo_method: "post"}, class: "btn btn-danger btn-sm" %>
+      <% else %>
+        <%= button_to "Close account", toggle_mode_user_path(@user), data: {turbo_method: "post"}, class: "btn btn-danger btn-sm" %>
       <% end %>
-    </ul>
-    <% if @user.ratings.any? %>
-      <p><strong>Favorite brewery: </strong> <%= @user.favorite_brewery %> </p>
-      <p><strong>Favorite style: </strong> <%= @user.favorite_style.name %> </p>
     <% end %>
-    <p><strong>Member of</strong></p>
-    <ul>
-      <% @user.beer_clubs.each do |beer_club| %>
-        <li>
-          <%= link_to beer_club.name, beer_club %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div>
-    <%= link_to "Back to users", users_path, class: "btn btn-primary btn-sm" %>
-    <% if @user == current_user %>
-      <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary btn-sm" %>
-      <br><br>
-      <%= button_to "Destroy this user", @user, method: :delete, class: "btn btn-danger btn-sm" %>
+  </p>
+  <p><%= "Has made #{pluralize(@user.ratings.count, 'rating')}, average rating #{@user.average_rating}" %></p>
+  <p><strong>ratings</strong></p>
+  <ul>
+    <% @user.ratings.each do |rating| %>
+      <li><%= "#{rating.to_s}" %>
+        <% if @user == current_user %>
+          <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
+        <% end %>
+      </li>
     <% end %>
-  </div>
+  </ul>
+  <% if @user.ratings.any? %>
+    <p><strong>Favorite brewery: </strong> <%= @user.favorite_brewery %> </p>
+    <p><strong>Favorite style: </strong> <%= @user.favorite_style.name %> </p>
+  <% end %>
+  <p><strong>Member of</strong></p>
+  <ul>
+    <% @user.beer_clubs.each do |beer_club| %>
+      <li>
+        <%= link_to beer_club.name, beer_club %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div>
+  <%= link_to "Back to users", users_path, class: "btn btn-primary btn-sm" %>
+  <% if @user == current_user %>
+    <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary btn-sm" %>
+    <br>
+    <br>
+    <%= button_to "Destroy this user", @user, method: :delete, class: "btn btn-danger btn-sm" %>
+  <% end %>
+</div>

@@ -1,7 +1,10 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>Username:</strong>
-    <%= user.username %>
+    <h3><%= user.username %></h3>
+     <% if user.closed  %>
+        <span class="badge bg-danger">closed</span>
+  <% end %>
   </p>
+ 
 
 </div>
