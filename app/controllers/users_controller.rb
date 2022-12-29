@@ -19,6 +19,15 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def toggle_mode
+    brewery = Brewery.find(params[:id])
+    brewery.update_attribute :active, !brewery.active
+
+    new_status = brewery.active? ? "active" : "retired"
+
+    redirect_to brewery, notice: "brewery activity status changed to #{new_status}"
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)

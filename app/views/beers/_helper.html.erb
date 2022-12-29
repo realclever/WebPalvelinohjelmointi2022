@@ -10,7 +10,7 @@
     <% @top_beers.each do |beer| %>
       <tr>
         <td><%= beer.name %></td>
-        <td><%= beer.average_rating %></td>
+        <td><%= round(beer.average_rating) %></td>
       </tr>
     <% end %>
   </tbody>

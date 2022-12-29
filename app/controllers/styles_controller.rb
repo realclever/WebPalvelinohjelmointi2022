@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[show edit update destroy]
+  before_action :ensure_that_is_admin, only: [:destroy]
 
   # GET /users or /users.jso
   def index

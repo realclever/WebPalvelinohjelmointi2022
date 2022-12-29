@@ -10,7 +10,7 @@
     <% @top_styles.each do |style| %>
       <tr>
         <td><%= style.name %></td>
-        <td><%= style.average_rating %></td>
+        <td><%= round(style.average_rating) %></td>
       </tr>
     <% end %>
   </tbody>
