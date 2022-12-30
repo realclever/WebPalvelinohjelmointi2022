@@ -1,9 +1,8 @@
 <%= render @brewery %>
 <div>
   <%= link_to "Change activity", toggle_activity_brewery_path(@brewery.id), data: {turbo_method: "post"}, class: "btn btn-primary btn-sm" %>
-  <%= link_to "Edit this brewery", edit_brewery_path(@brewery), class: "btn btn-primary btn-sm" if current_user %>
+  <%= edit_and_destroy_buttons(@brewery) %>
+  <br>
+  <br>
   <%= link_to "Back to breweries", breweries_path, class: "btn btn-primary btn-sm" %>
-  <br>
-  <br>
-  <%= button_to "Destroy this brewery", @brewery, method: :delete, class: "btn btn-danger btn-sm" if current_user %>
 </div>

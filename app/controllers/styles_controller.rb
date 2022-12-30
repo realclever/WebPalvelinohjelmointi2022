@@ -22,7 +22,7 @@ class StylesController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @style = Style.new(styles_params)
+    @style = Style.new(style_params)
 
     respond_to do |format|
       if @style.save
@@ -35,22 +35,37 @@ class StylesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @style.update(style_params)
+        format.html { redirect_to style_url(@style), notice: "Style was successfully updated." }
+        format.json { render :show, status: :ok, location: @style }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @style.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /styles/1 or /styles/1.json
+  def destroy
+    @style.destroy
+
+    respond_to do |format|
+      format.html { redirect_to styles_url, notice: "Style was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_style
     @style = Style.find(params[:id])
   end
 
-  def destroy
-    style = Style.find params[:id]
-    style.delete
-    respond_to do |format|
-      format.html { redirect_to styles_path(current_user), notice: "Style was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
   # Only allow a list of trusted parameters through.
-  def styles_params
+  def style_params
     params.require(:style).permit(:name, :description)
   end
 end

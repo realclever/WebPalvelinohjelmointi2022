@@ -56,22 +56,21 @@ end
 
     it "favorite brewery and style exists" do
       sign_in(username: "Pekka", password: "Foobar1")
-      expect(page).to have_content "Favorite brewery Olut valmistaja"
-      expect(page).to have_content "Favorite style Dubbel"
-      save_and_open_page
+      expect(page).to have_content "Favorite brewery: Olut valmistaja"
+      expect(page).to have_content "Favorite style: Dubbel"
     end
 
     it "favorite brewery and style exists revisited" do
       sign_in(username: "Pekka", password: "Foobar1")
-      expect(page).to have_content "Favorite brewery Olut valmistaja"
-      expect(page).to have_content "Favorite style Dubbel"
+      expect(page).to have_content "Favorite brewery: Olut valmistaja"
+      expect(page).to have_content "Favorite style: Dubbel"
       expect(page).to have_content "Pekka\nHas made 3 ratings, average rating 5.0"
       expect{
         page.all('a', text: 'Delete')[1].click 
       }.to change{Rating.count}.by(-1)
       expect(page).to have_content "Pekka\nHas made 2 ratings, average rating 4.0"
-      expect(page).to have_content "Favorite brewery Beer factory"
-      expect(page).to have_content "Favorite style Dubbel"
+      expect(page).to have_content "Favorite brewery: Beer factory"
+      expect(page).to have_content "Favorite style: Dubbel"
     end
 
     it "shows users ratings" do

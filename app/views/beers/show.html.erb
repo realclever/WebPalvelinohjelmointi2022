@@ -8,8 +8,7 @@
   <% end %>
   <br>
   <div>
-    <%= link_to "Edit this beer", edit_beer_path(@beer), class: "btn btn-primary btn-sm" %>
-    <br><br>
-    <%= button_to "Destroy this beer", @beer, method: :delete, class: "btn btn-danger btn-sm" %>
+   <%= edit_and_destroy_buttons(@beer) %>
+    <%= link_to "Back to beers", beers_path, class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>

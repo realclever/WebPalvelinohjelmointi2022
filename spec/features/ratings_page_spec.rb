@@ -28,14 +28,19 @@ describe "Rating" do
 
   it "when there's no ratings yet" do
     visit ratings_path
-    expect(page).to have_content 'List of ratings'
-    expect(page).to have_content 'Number of ratings: 0'  
+    expect(page).to have_content 'Ratings'
+    expect(page).to have_content 'iso 3 0.0'  
+    expect(page).to have_content 'Karhu 0.0' 
+    expect(page).to have_content 'Koff 0.0' 
+    expect(page).to have_content 'Dubbel 0.0'
   end  
 
   it "when there's ratings" do
     FactoryBot.create :rating, user: user
     visit ratings_path
-    expect(page).to have_content 'List of ratings'
-    expect(page).to have_content 'Number of ratings: 1'  
+    expect(page).to have_content 'Ratings'
+    expect(page).to have_content 'anonymous 10.0'
+    expect(page).to have_content 'iso 3 0.0'   
+    expect(page).to have_content 'Dubbel 10.0'
   end  
 end
