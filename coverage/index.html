@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-30T18:49:32+02:00">2022-12-30T18:49:32+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-30T20:24:57+02:00">2022-12-30T20:24:57+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -172,11 +172,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#100289b84e1576d1559b9251436ff89b1240851e" class="src_link" title="app/controllers/sessions_controller.rb">app/controllers/sessions_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">76.92 %</td>
-            <td class="cell--number">21</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">13</td>
             <td class="cell--number">10</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">4.85</td>
+            <td class="cell--number">4.77</td>
             
           </tr>
         
@@ -452,7 +452,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.49
+         1.48
        </span>
     </span> hits/line
     )
@@ -572,11 +572,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#100289b84e1576d1559b9251436ff89b1240851e" class="src_link" title="app/controllers/sessions_controller.rb">app/controllers/sessions_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">76.92 %</td>
-            <td class="cell--number">21</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">13</td>
             <td class="cell--number">10</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">4.85</td>
+            <td class="cell--number">4.77</td>
             
           </tr>
         
@@ -5925,35 +5925,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="7">
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="8">
             <span class="hits">12</span>
             
 
             
 
-            <code class="ruby">    if user.closed?</code>
+            <code class="ruby">    if user.nil? || !user.authenticate(params[:password])</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="8">
-            
-            
-
-            
-
-            <code class="ruby">      redirect_to signin_path, notice: &quot;Your account is closed, please contact with admin&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="9">
-            <span class="hits">12</span>
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    elsif user&amp;.authenticate(params[:password])</code>
+            <code class="ruby">      redirect_to signin_path, notice: &quot;Username and/or password mismatch&quot;</code>
           </li>
         </div>
       
@@ -5964,18 +5964,18 @@
 
             
 
-            <code class="ruby">      session[:user_id] = user.id</code>
+            <code class="ruby">    elsif user.closed?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="11">
-            <span class="hits">11</span>
+          <li class="missed" data-hits="0" data-linenumber="11">
+            
             
 
             
 
-            <code class="ruby">      redirect_to user_path(user), notice: &quot;Welcome back!&quot;</code>
+            <code class="ruby">      redirect_to signin_path, notice: &quot;account closed, please contact admin&quot;</code>
           </li>
         </div>
       
@@ -5991,24 +5991,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="11" data-linenumber="13">
+            <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">      redirect_to signin_path, notice: &quot;Username and/or password mismatch&quot;</code>
+            <code class="ruby">      session[:user_id] = user.id</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="14">
+            <span class="hits">11</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      redirect_to user_path(user), notice: &quot;Welcome back!&quot;</code>
           </li>
         </div>
       
@@ -6019,7 +6019,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6030,12 +6030,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
@@ -6046,7 +6057,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="18">
+          <li class="missed" data-hits="0" data-linenumber="19">
             
             
 
@@ -6057,7 +6068,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="19">
+          <li class="missed" data-hits="0" data-linenumber="20">
             
             
 
@@ -6068,7 +6079,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 
@@ -6079,7 +6090,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
