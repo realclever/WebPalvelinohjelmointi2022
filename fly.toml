@@ -1,14 +1,20 @@
-# fly.toml file generated for rating-beers-app on 2022-11-28T20:25:07+02:00
+# fly.toml file generated for beers-rating-app on 2022-12-30T19:37:56+02:00
 
-app = "rating-beers-app"
+app = "beers-rating-app"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [build]
-  image = "flyio/hellofly:latest"
+  [build.args]
+    BUILD_COMMAND = "bin/rails fly:build"
+    SERVER_COMMAND = "bin/rails fly:server"
+
+[deploy]
+  release_command = "bin/rails fly:release"
 
 [env]
+  PORT = "8080"
 
 [experimental]
   allowed_public_ports = []
@@ -39,3 +45,7 @@ processes = []
     interval = "15s"
     restart_limit = 0
     timeout = "2s"
+
+[[statics]]
+  guest_path = "/app/public"
+  url_prefix = "/"
